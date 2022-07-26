@@ -1,0 +1,341 @@
+<div id="wrapper">
+
+
+
+			<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
+
+				<!-- TOP NAV -->
+				<header id="topNav">
+					<div class="container">
+
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						<!-- Logo -->
+
+						<a class="logo float-left" href="index.html#">
+							<img src="assets/images//Logo.png" alt="Logo" />
+						</a>
+
+
+						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+									<li class="active">
+										<!-- HOME -->
+										<a id="home-nav" href="welcome/index">
+											HOME
+										</a>
+									</li>
+									<li>
+										<!-- SERVICES -->
+										<a id="services-nav" href="index.html#services">
+											SERVICES
+										</a>
+									</li>
+									<li>
+										<!-- PORTFOLIO -->
+										<a id="portfolio-nav" href="index.html#portfolio">
+											PORTFOLIO
+										</a>
+									</li>
+									<li>
+										<!-- NEWS -->
+										<a id="news-nav" href="index.html#news">
+											NEWS
+										</a>
+									</li>
+
+									<li>
+										<!-- CLIENTS -->
+										<a id="clients-nav" href="index.html#clients">
+											CLIENTS
+										</a>
+									</li>
+									<li>
+										<!-- CONTACT -->
+										<a id="contact-nav" href="index.html#contact">
+											CONTACT
+										</a>
+									</li>
+									<li>
+										<!-- SUBMISSION -->
+										<a id="quote-nav" href="quote.html">
+											SUBMISSION
+										</a>
+									</li>
+
+									<li>
+										<!-- ADMIN -->
+										<a id="quote-nav" href="/admin">
+											ADMIN
+										</a>
+									</li>
+
+									
+									<%# <li>
+										<!-- LOGIN -->
+										<a id="login-nav" href="/admin">
+											LOGIN
+										</a>
+									</li>
+									<li>
+										<!-- LOGOUT -->
+										<a id="logout-nav" data-method="delete" href="/users/sign_out">
+											LOGOUT
+										</a>
+									</li> %>
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+				<!-- /Top Nav -->
+
+			</div>
+
+			<h1 style="font-size:4vw; text-align:center; background-color:#303030; color:white">
+				<i>
+					Our prices</i>
+			</h1>
+
+
+			<form action="/quote" method="post">
+
+
+
+
+				<div class="center">
+
+					<ul id="building-type">
+
+						<li class="align col-md-2">
+							<input type="radio" id="buildingOption1" name="Building_Type" value="residentialBuilding">
+							<label for="buildingOption1 ">Residential Building</label>
+						</li>
+
+						<li class="align col-md-2">
+							<input type="radio" id="buildingOption2" name="Building_Type" value="corporateBuilding">
+							<label for="buildingOption2"> Corporate Building </label>
+						</li>
+
+						<li class="align col-md-2">
+							<input type="radio" id="buildingOption3" name="Building_Type" value="commercialBuilding">
+							<label for="buildingOption3">Commercial Building</label>
+						</li>
+
+						<li class="align col-md-2">
+							<input type="radio" id="buildingOption4" name="Building_Type" value="hybridBuilding">
+							<label for="buildingOption4">Hybrid Building</label>
+						</li>
+
+
+					</ul>
+				</div>
+				</section>
+
+				<div class="col-md">
+					<!--  Number of Apartments  -->
+					<div id="number-of-apartments" class="buildingQuestions residential1 ">
+						<label for="number-of-apartments">The number of apartments in the
+							building</label>
+						<input class="col-md-3" type="number" name="Number_of_apartments" min="0">
+					</div>
+
+					<!-- Number of floors -->
+					<div id="number-of-floors" class="buildingQuestions residential1 corporate1 commercial1 hybrid1">
+						<label for="number-of-floors">The number of floors contained in
+							the
+							building</label>
+						<input class="col-md-3 " type="number" name="Number_of_floors" min="0">
+					</div>
+
+					<!-- Number of basements -->
+					<div id="number-of-basements" class="buildingQuestions residential1 corporate1 commercial1 hybrid1">
+						<label for="number-of-basements">The number of basements contained in
+							the
+							building</label>
+						<input class=" col-md-3" type="number" name="Number_of_basements" min="0">
+					</div>
+
+					<!-- Number of parking places -->
+					<div id="number-of-parking-spots" class="buildingQuestions corporate1 commercial1 hybrid1">
+						<label for="number-of-parking-spots">The number of parking space
+							available</label>
+						<input class=" col-md-3" type="number" name="Number_of_parking_spaces" min="0">
+					</div>
+
+					<!-- Number of coorporations -->
+					<div id="number-of-corporations" class="buildingQuestions corporate1">
+						<label for="number-of-corporations">The number of separate tenant
+							companies</label>
+						<input class=" col-md-3" type="number" name="Number_of_separate_companies" min="0">
+					</div>
+
+					<!-- Maximum occupancy -->
+					<div id="maximum-occupancy" class="buildingQuestions corporate1 hybrid1">
+						<label for="maximum-occupancy">The maximum number of
+							occupants per
+							floor</label>
+						<input class=" col-md-3" type="number" name="Maximum_Number_Of_Occupants_Per_Floor" min="0">
+					</div>
+
+					<!-- Number of companies -->
+					<div id="number-of-companies" class="buildingQuestions commercial1 hybrid1">
+						<label for="number-of-companies">The number of distinct
+							businesses.</label>
+						<input class=" col-md-3" type="number" name="Number_Of_Distinct_Businesses" min="0">
+					</div>
+
+					<!-- Number of elevator -->
+					<div id="number-of-elevators" class="buildingQuestions commercial1">
+						<label for="number-of-elevators">The number of elevator cages to be
+							deployed</label>
+						<input class=" col-md-3" type="number" name="Number_Of_Elevators_Needed" min="0">
+					</div>
+
+					<!-- Buisness hours -->
+					<div id="business-hours" class="buildingQuestions hybrid1">
+						<label for="business-hours">The number of hours of activity of the
+							building</label>
+						<input class=" col-md-3" type="number" name="Number_Of_Hours_Of_Activity_Of_The_Building" min="0" max="24">
+					</div>
+
+				</div>
+
+
+
+				<div id="product-line" class=" center residential1 corporate1 commercial1 hybrid1 buildingQuestions">
+
+					<ul>
+
+						<li class="center1 col-md-2 ">
+							<input type="radio" id="standard" name="Type_Of_Installation" value="standard">
+							<label for="standard">Standard</label>
+						</li>
+
+						<li class="center1 col-md-2  ">
+							<input type="radio" id="premium" name="Type_Of_Installation" value="premium">
+							<label for="premium"> Premium </label>
+						</li>
+
+						<li class="center1 col-md-2 ">
+							<input type="radio" id="excelium" name="Type_Of_Installation" value="excelium">
+							<label for="excelium">Excelium</label>
+						</li>
+
+					</ul>
+
+				</div>
+
+
+
+				<div id="elevator-amount" class="buildingQuestions residential1 corporate1 commercial1 hybrid1">
+					<label for="elevator-amount">Elevators needed<br></label>
+					<input class=" col-md-3 right" name="Amount_Of_Elevators_Needed" disabled>
+				</div>
+
+				<div id="elevator-unit-price" class="buildingQuestions residential1 corporate1 commercial1 hybrid1">
+					<label for="elevator-unit-price">Price of each elevator<br></label>
+					<input class=" col-md-3 right" name="Elevator_Unit_Price" disabled>
+				</div>
+
+				<div id="elevator-total-price" class="buildingQuestions residential1 corporate1 commercial1 hybrid1">
+					<label for="business-hours">Elevator total price<br></label>
+					<input class=" col-md-3 right" name="Elevator_Total_Price" disabled>
+				</div>
+
+				<div id="installation-fees" class="buildingQuestions residential1 corporate1 commercial1 hybrid1">
+					<label for="installation-fees">Installation fees<br></label>
+					<input class=" col-md-3 right" name="Installation_Fees" disabled>
+				</div>
+
+				<div id="final-price" class="buildingQuestions residential1 corporate1 commercial1 hybrid1">
+					<label for="final-price">Final price<br></label>
+					<input class=" col-md-3 right" name="Final_Price" disabled>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 center">
+						<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit
+						</button>
+					</div>
+				</div>
+
+
+			</form>
+
+
+
+
+
+			<!-- /Parallax -->
+
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<!-- col #1 -->
+						<div class="col-md-8">
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+								We have the conviction that we create the most innovative and reliable
+								products
+								on the
+								market.<a href="#contact"> Contact us</a> today for any questions you
+								might
+								have.</p>
+							<h2><a href="tel:(418) 555-1234">(418) 555-1234</a></h2>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-4 col-sm-4">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+							<form class="validate" action="php/newsletter.php" method="post"
+								data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required"
+										placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn btn-primary" type="submit">Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a href="#">Terms &amp; Conditions</a></li>
+							<li>&bull;</li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+						&copy; All Rights Reserved, Company LTD
+					</div>
+				</div>
+
+			</footer>
+			<!-- /FOOTER -->
+
+		</div>

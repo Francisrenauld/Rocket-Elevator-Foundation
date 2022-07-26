@@ -1,0 +1,124 @@
+<%
+  def function 
+
+    $number_of_elevators_not_in_running_status = 0
+    $number_of_buildings = 0
+    $number_of_batteries = 0
+    $number_of_columns   = 0
+    $number_of_elevators = 0
+    $array_of_cities = []
+    $array_of_elevators = []
+    $array_of_buildings = []
+    $array_of_batteries = []
+    $array_of_customers = []
+    $number_of_leads = Lead.count
+    $number_of_quotes = Quote.count
+    $last_name = current_user.employee.Last_Name
+    $first_name = current_user.employee.First_Name
+
+    Customer.all.each do |customer|
+      customer.buildings.each do |buildings|
+        buildings.batteries.each do |batteries|
+          batteries.columns.each do |columns|                
+            columns.elevators.each do |elevators|
+
+              if $array_of_buildings.exclude? buildings.id 
+                $array_of_buildings.push(buildings.id)
+                $number_of_buildings = $array_of_buildings.length
+              end
+
+              if $array_of_customers.exclude? customer.id  
+                $array_of_customers.push(customer.id)
+                $number_of_customers = $array_of_customers.length
+              end
+
+              if $array_of_cities.exclude? buildings.address.City  
+                $array_of_cities.push(buildings.address.City)
+                $number_of_cities = $array_of_cities.length
+              end
+
+              if $array_of_batteries.exclude? batteries.id  
+                $array_of_batteries.push(batteries.id)
+                $number_of_batteries = $array_of_batteries.length
+              end
+
+              if $array_of_elevators.exclude? elevators.id  
+                $array_of_elevators.push(elevators.id)
+                $number_of_elevators = $array_of_elevators.length
+              end
+              
+              if elevators.Status != "Active"
+                $number_of_elevators_not_in_running_status += 1
+              end
+
+            end
+          end   
+        end        
+      end 
+    end
+  end
+%>
+<% function() %>
+     
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AWS SDK for JavaScript - Browser Getting Started Application</title>
+  </head>
+
+  <body>
+    <div id="textToSynth">
+      <input autofocus size="23" type="text" id="textEntry" value="Greetings<%= $first_name %><%= $last_name %>...........
+       There are currently <%= $number_of_elevators %> elevators deployed in the <%= $number_of_buildings %> buildings of your <%= $number_of_customers %> customers...........
+       Currently, <%= $number_of_elevators_not_in_running_status %> elevators are not in Running Status and are being serviced..............
+       You currently have <%= $number_of_quotes %> quotes awaiting processing..............
+       You currently have <%= $number_of_leads %> leads in your contact requests................
+       <%= $number_of_batteries %> Batteries are deployed across <%= $number_of_cities %> cities" hidden/>
+      <button class="btn default" onClick="speakText()">Fetch Data</button>
+      <p hidden id="result">Enter text above then click Synthesize</p>
+    </div>
+    </br>
+    <audio id="audioPlayback" controls >
+      <source id="audioSource" type="audio/mp3" onClick="speakText()" src="">
+    </audio>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.410.0.min.js"></script>
+    <script type="text/javascript">
+
+        // Initialize the Amazon Cognito credentials provider
+        AWS.config.region = 'us-west-2'; // Region
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-west-2:3b2a6496-4c27-4d60-9b77-883717b428a5',
+        });
+
+        // Function invoked by button click
+        function speakText() {
+            // Create the JSON parameters for getSynthesizeSpeechUrl
+            var speechParams = {
+                OutputFormat: "mp3",
+                SampleRate: "16000",
+                Text: "",
+                TextType: "text",
+                VoiceId: "Matthew"
+            };
+            speechParams.Text = document.getElementById("textEntry").value;
+
+            // Create the Polly service object and presigner object
+            var polly = new AWS.Polly({apiVersion: '2016-06-10'});
+            var signer = new AWS.Polly.Presigner(speechParams, polly)
+
+            // Create presigned URL of synthesized speech file
+            signer.getSynthesizeSpeechUrl(speechParams, function(error, url) {
+            if (error) {
+                document.getElementById('result').innerHTML = error;
+            } else {
+                document.getElementById('audioSource').src = url;
+                document.getElementById('audioPlayback').load();
+                document.getElementById('result').innerHTML = "Speech ready to play.";
+            }
+          });
+        }
+    </script>
+  </body>
+</html>
+

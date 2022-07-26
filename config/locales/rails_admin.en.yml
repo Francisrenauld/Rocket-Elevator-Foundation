@@ -1,0 +1,8 @@
+en:
+  admin:
+    new:
+      title: "New %{model_label}"
+      menu: "Test"
+      breadcrumb: "New"
+      link: "Add a new %{model_label}"
+      done: "created"

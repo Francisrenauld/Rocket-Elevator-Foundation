@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Type: MyString
+  Status: MyString
+  EmployeeId: 1
+  Date_Of_Commissioning: 2022-07-04
+  Date_Of_Last_Inspection: 2022-07-04
+  Certificate_Of_Operations: MyString
+  Information: MyString
+  Notes: MyString
+
+two:
+  Type: MyString
+  Status: MyString
+  EmployeeId: 1
+  Date_Of_Commissioning: 2022-07-04
+  Date_Of_Last_Inspection: 2022-07-04
+  Certificate_Of_Operations: MyString
+  Information: MyString
+  Notes: MyString
