@@ -121,19 +121,16 @@
     </div>
   <% end %>
 
-<div text-align:center>
-
-  <div class="field", style="visibility: hidden">
-    <%= form.label :author %>
-     <%= form.number_field :author, value: current_user&.employee&.id%>
+  <div class="field">
+     <%= form.hidden_field :author, value: current_user&.employee&.id%>
   </div>
 
-
+<div class="field center align">
   <div class="field" id="customer">
     <%= form.label :customer_id %>
     <% options = options_from_collection_for_select(@customer, "id", ->(customer) { "#{customer.id} - #{customer.Company_Name}" }) %>
     <%= form.select :customer_id,  options %>
-
+  </div>
   <div class="field" id="building">
     <%= form.label :building_id %>
     <% options = options_from_collection_for_select(@building, "id", "id") %>
@@ -166,15 +163,14 @@
 
   <div class="field">
     <%= form.label :report %>
-    <%= form.text_field :report %>
+    <%= form.text_area :report, cols: 50,  maxlength: 30000 %>
   </div>
-
+  </br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :Submit %>
   </div>
-<% end %>
-
 </div>
+<% end %>
 
 			</form>
 
