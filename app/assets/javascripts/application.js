@@ -30,5 +30,5 @@
 //= require map
 //= require activestorage
 //= require jquery_ujs
-//= require buildings
+//= require intervention
 //= require aws_polly

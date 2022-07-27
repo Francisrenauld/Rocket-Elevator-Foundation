@@ -1,5 +1,6 @@
 class InterventionsController < ApplicationController
   before_action :set_intervention, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
   # GET /interventions or /interventions.json
   def index
     @interventions = Intervention.all
@@ -12,9 +13,18 @@ class InterventionsController < ApplicationController
 
   # GET /interventions/new
   def new
+    if !current_user.admin
+      redirect_to :root, alert: "You are not authorized you have to be an admin to go on this page"
+      return
+    end
+    @user = current_user
     @intervention = Intervention.new
     @customer = Customer.all
     @building = Building.all
+    @battery = Battery.all
+    @column = Column.all
+    @elevator = Elevator.all
+    @employee = Employee.all
   end
 
   # GET /interventions/1/edit
@@ -25,9 +35,9 @@ class InterventionsController < ApplicationController
   def create
     @intervention = Intervention.new(intervention_params)
 
-
     respond_to do |format|
       if @intervention.save
+        format.html { redirect_to "/", notice: "Your Intervention was successfully sent." }
         format.html { redirect_to intervention_url(@intervention), notice: "Intervention was successfully created." }
         format.json { render :show, status: :created, location: @intervention }
 

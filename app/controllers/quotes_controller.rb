@@ -23,16 +23,11 @@ class QuotesController < ApplicationController
   # POST /quotes or /quotes.json
   def create
     @quote = Quote.new(quote_params)
-    pp "============================================================================================"
-    pp "create"
-    pp "============================================================================================"
 
     respond_to do |format|
       if @quote.save
         format.html { redirect_to "/", notice: "Your Quote was successfully sent." }
         
-        pp @quote.as_json
-
         RestClient.post('https://rocketelevator-help.freshdesk.com/api/v2/tickets',
         {
          "type": "Question",

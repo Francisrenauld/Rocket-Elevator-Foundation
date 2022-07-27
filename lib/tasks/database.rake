@@ -241,8 +241,8 @@ namespace :database do
                 updated_at: date,
             )
 
-        nbTime3 = Faker::Number.between(from: 1, to: 2)
-        nbTime3.times do
+        # nbTime3 = Faker::Number.between(from: 1, to: 2)
+        # nbTime3.times do
             building = Building.create!(
                 customer: customer,
                 address: address_obj,
@@ -314,7 +314,7 @@ namespace :database do
                         created_at: cbe,
                         updated_at: cbe,
                     )
-                    end
+                   # end
                 end
             end
         end

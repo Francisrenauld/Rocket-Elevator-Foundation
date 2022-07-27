@@ -1,3 +1,113 @@
+<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
+
+				<!-- TOP NAV -->
+				<header id="topNav">
+					<div class="container">
+
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						<!-- Logo -->
+
+						<a class="logo float-left scrollTo" href="/">
+							<img src="assets/images/Logo.png" alt="" />
+						</a>
+
+						<!--
+							Top Nav
+
+							AVAILABLE CLASSES:
+							submenu-dark = dark sub menu
+						-->
+						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<!--
+									.nav-onepage
+									Required for onepage navigation links
+
+									Add .external for an external link!
+								-->
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+									<li class="active">
+										<!-- HOME -->
+										<a id="home-nav" href="/">
+											HOME
+										</a>
+									</li>
+									<li> 
+										<!-- SERVICES -->
+										<a id="services-nav" href="/#services">
+											SERVICES
+										</a>
+									</li>
+									<li>
+										<!-- PORTFOLIO -->
+										<a id="portfolio-nav" href="/#portfolio">
+											PORTFOLIO
+										</a>
+									</li>
+									<li>
+										<!-- NEWS -->
+										<a id="news-nav" href="/#news">
+											NEWS
+										</a>
+									</li>
+
+									<li>
+										<!-- CLIENTS -->
+										<a id="clients-nav" href="/#clients">
+											CLIENTS
+										</a>
+									</li>
+                  <li>
+                  <!-- INTERVENTION -->
+                  <a id="clients-nav" href="intervention">
+                    INTERVENTION
+                  </a>
+                </li>
+									<li>
+										<!-- CONTACT -->
+										<a id="contact-nav" href="/#contact">
+											CONTACT
+										</a>
+									<%# <li>
+										<!-- SUBMISSION -->
+										<a id="quote-nav" href="quotes/new.html">
+											SUBMISSION
+										</a>
+									</li> %>
+          
+									<%# <li>
+										<!-- LOGIN -->
+										<a id="login-nav" href="/admin">
+											LOGIN
+										</a>
+									</li>
+									<li>
+										<!-- LOGOUT -->
+										<a id="logout-nav" data-method="delete" href="/users/sign_out">
+											LOGOUT
+										</a>
+									</li> %>
+
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+				<!-- /Top Nav -->
+
+			</div>
+      <h1 style="font-size:4vw; text-align:center; background-color:#303030; color:white">
+				<i>
+					Intervention</i>
+			</h1> <br><br>
+
 <%= form_with(model: intervention, local: true) do |form| %>
   <% if intervention.errors.any? %>
     <div id="error_explanation">
@@ -11,9 +121,11 @@
     </div>
   <% end %>
 
-  <div class="field">
+<div text-align:center>
+
+  <div class="field", style="visibility: hidden">
     <%= form.label :author %>
-     <%= form.number_field :author %>
+     <%= form.number_field :author, value: current_user&.employee&.id%>
   </div>
 
 
@@ -28,39 +140,28 @@
     <%= form.select :building_id,  options %>
   </div>
 
-  <div class="field">
+  <div class="field" id="battery">
     <%= form.label :battery_id %>
-    <%= form.number_field :battery_id %>
+    <% options = options_from_collection_for_select(@battery, "id", "id")%>
+    <%= form.select :battery_id,  options %>
   </div>
 
-  <div class="field">
+  <div class="field" id="column">
     <%= form.label :column_id %>
-    <%= form.number_field :column_id %>
+    <% options = options_from_collection_for_select(@column, "id", "id")%>
+    <%= form.select :column_id,  options %>
   </div>
 
-  <div class="field">
+  <div class="field" id="elevator">
     <%= form.label :elevator_id %>
-    <%= form.number_field :elevator_id %>
+    <% options = options_from_collection_for_select(@elevator, "id", "id")%>
+    <%= form.select :elevator_id,  options %>
   </div>
 
   <div class="field">
     <%= form.label :employee_id %>
-    <%= form.number_field :employee_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date_and_time_of_the_intervention %>
-    <%= form.datetime_select :start_date_and_time_of_the_intervention %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date_and_time_of_the_intervention %>
-    <%= form.datetime_select :end_date_and_time_of_the_intervention %>
-  </div>
-
-  <div class="field">
-    <%= form.label :result %>
-    <%= form.text_field :result %>
+    <% options = options_from_collection_for_select(@employee, "id",  ->(employee) { "#{employee.First_Name}  #{employee.Last_Name}" })%>
+    <%= form.select :employee_id,  options %>
   </div>
 
   <div class="field">
@@ -68,12 +169,77 @@
     <%= form.text_field :report %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+</div>
+
+			</form>
+
+			<!-- /Parallax -->
+
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<!-- col #1 -->
+						<div class="col-md-8">
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+								We have the conviction that we create the most innovative and reliable
+								products
+								on the
+								market.<a href="#contact"> Contact us</a> today for any questions you
+								might
+								have.</p>
+							<h2><a href="tel:(418) 555-1234">(418) 555-1234</a></h2>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-4 col-sm-4">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+							<form class="validate" action="php/newsletter.php" method="post"
+								data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required"
+										placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn btn-primary" type="submit">Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a href="#">Terms &amp; Conditions</a></li>
+							<li>&bull;</li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+						&copy; All Rights Reserved, Company LTD
+					</div>
+				</div>
+
+			</footer>
+			<!-- /FOOTER -->
+
+		</div>
