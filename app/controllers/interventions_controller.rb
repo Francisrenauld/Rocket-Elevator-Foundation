@@ -34,14 +34,31 @@ class InterventionsController < ApplicationController
   # POST /interventions or /interventions.json
   def create
     @intervention = Intervention.new(intervention_params)
-
     respond_to do |format|
       if @intervention.save
         format.html { redirect_to "/", notice: "Your Intervention was successfully sent." }
+
+        comapny_name = Customer.find(@intervention.customer_id).Company_Name
+        employeeFirstName = Employee.find(@intervention.employee_id).First_Name
+        employeeLastName = Employee.find(@intervention.employee_id).Last_Name
+
+        RestClient.post('https://rocketelevator-help.freshdesk.com/api/v2/tickets',
+        {
+         "type": "Incident",
+         "status": 2,
+         "priority": 1,
+         "description": "Author : "+ current_user.email + " | " + " Company name : " + comapny_name + " | " +
+         " BuildingID : " + @intervention.building_id.to_s + " | " + " BatteryID : " + @intervention.battery_id.to_s + " | " +" ColumnID : " + @intervention.column_id.to_s +
+         " | " + " ElevatorID : " + @intervention.elevator_id.to_s +
+         " | " + " Employee assigned : " + employeeFirstName + " " + employeeLastName + " | " + " Description : " + @intervention.report,
+         "subject": "new ticket sample #{Time.now}",
+         "email": "rocketelevator2@gmail.com"}.to_json, 
+        {
+          "Authorization": "Basic dlhubExKdWF6WkhOVGRKRjJmVnA6eA==",
+          "Content-Type": "application/json"})
+
         format.html { redirect_to intervention_url(@intervention), notice: "Intervention was successfully created." }
         format.json { render :show, status: :created, location: @intervention }
-
-
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @intervention.errors, status: :unprocessable_entity }
