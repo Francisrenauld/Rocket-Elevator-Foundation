@@ -74,12 +74,15 @@
 											CLIENTS
 										</a>
 									</li>
+									
 									<li>
 									<!-- INTERVENTION -->
-									<a id="clients-nav" href="intervention">
-										INTERVENTION
-									</a>
+									<% if current_user == nil || !current_user.is_admin? %>
+									<% elsif current_user.is_admin? %> 
+									<%= link_to "INTERVENTION", "/interventions/new" %>
+									<% end %>
 									</li>
+									
 									<li>
 										<!-- CONTACT -->
 										<a id="contact-nav" href="#contact">
@@ -99,11 +102,6 @@
 										</a>
 									</li>
 
-
-									<%# <li>
-									<form class="button_to" method="post" action="/users/sign_in"><input type="submit" value="login"><input type="hidden" name="authenticity_token" value="ReHUar2Z+4UQcy/UpvELH+SQ54pCdj9INWHcBZQKspHDnFpzykS3Ij1NyRvdmQ28Q9reMGpDDi1m0qz+zn3w1w=="></form>
-									</li> %>
-
 									<li>
 										<!-- SUBMISSION -->
 										<% if user_signed_in? %> 
@@ -112,31 +110,9 @@
     										 <%= button_to "LOGIN", new_user_session_path %>
     									<% end %>
 									</li>
-
-									
-
-
-
-
-
-									<%# <li>
-										<!-- LOGIN -->
-										<a id="login-nav" href="/admin" href="/users/sign_in">
-											LOGIN
-										</a>
-									</li>
-									<li>
-										<!-- LOGOUT -->
-										<a id="logout-nav" data-method="delete" href="/users/sign_out">
-											LOGOUT
-										</a>
-									</li> %>
-
 								</ul>
-
 							</nav>
 						</div>
-
 					</div>
 				</header>
 				<!-- /Top Nav -->

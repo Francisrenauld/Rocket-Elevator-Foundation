@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   get 'map' => 'googlemaps#map'
 
-  get 'intervention' => 'interventions#new'
+  get '/intervention' => 'interventions#new'
 
   get 'get_buildings_by_customer/:customer_id', to: 'buildings#get_buildings_by_customer'  
   get '/building_search' => 'buildings#building_search'

@@ -62,6 +62,13 @@
 										</a>
 									</li>
 									<li>
+									<!-- INTERVENTION -->
+									<% if current_user == nil || !current_user.is_admin? %>
+									<% elsif current_user.is_admin? %> 
+									<%= link_to "INTERVENTION", "/interventions/new" %>
+									<% end %>
+									</li>
+									<li>
 										<!-- SUBMISSION -->
 										<a id="quote-nav" href="quote.html">
 											SUBMISSION

@@ -62,12 +62,13 @@
 											CLIENTS
 										</a>
 									</li>
-                  <li>
-                  <!-- INTERVENTION -->
-                  <a id="clients-nav" href="intervention">
-                    INTERVENTION
-                  </a>
-                </li>
+									<li>
+									<!-- INTERVENTION -->
+									<% if current_user == nil || !current_user.is_admin? %>
+									<% elsif current_user.is_admin? %> 
+									<%= link_to "INTERVENTION", "/interventions/new" %>
+									<% end %>
+									</li>
 									<li>
 										<!-- CONTACT -->
 										<a id="contact-nav" href="/#contact">
