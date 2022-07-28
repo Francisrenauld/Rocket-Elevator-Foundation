@@ -41,7 +41,7 @@ class InterventionsController < ApplicationController
         comapny_name = Customer.find(@intervention.customer_id).Company_Name
         employeeFirstName = Employee.find(@intervention.employee_id).First_Name
         employeeLastName = Employee.find(@intervention.employee_id).Last_Name
-2
+
         RestClient.post('https://rocketelevator-help.freshdesk.com/api/v2/tickets',
         {
          "type": "Incident",
