@@ -1,66 +1,15 @@
-# Context WEEK 8
+# Context WEEK 9
 
-For this week's project, we had to create 2 APIs along with a new table for our postgreSQL database and fake data for the new table. Our first API was made using graphql on Rails and our second API is a REST API with C#. The goal of this week's project was to allow us to get to know a lot more about APIs and how they work. We used ruby on rails, c# for our programing languages along with heroku to host our APIs online and postman to do GET,PUT,POST requests to test our REST API and publish our work for both APIs.
+For this week's project, i added i new page intervention page so that all the admin on the site can have access to it and create an new intervention. I also create my own databse and added a new table name intervention that save what the user put in the intervention page of my site and i did so that the intervention page show the next dropdown menu when the previous one is selected and all the other dropdown menu show the data realated to the customer selected in the first dropdown menu.
 
 Link to our Website => https://rocketelevators.cfd/
 
 Link to our Video => https://youtu.be/tKcguiwSwcM
 
-# Tasks to quickly run specific actions :
 
-| Command | Task Description |
-| --- | --- |
-| rails database:mysql | Run the following tasks: empty_mysql, fake|
-| rails database:empty_mysql | Empty all mysql tables |
-| rails database:fake | Populate mysql tables with fake data |
-| rails database:run| Run the following tasks: Drop_Tables, create_psql_tables, populate_psql_tables|
-| rails database:Drop_Tables | Drop all the tables in postgresql that are specified in the task |
-| rails database:create_psql_tables | Create all the tables in postgresql that are specified in the task |
-| rails database:populate_psql_tables | Populate all the tables in postgresql that are specified in the task with data from the mysql database|
-| rails database:test_connection | Test your connection with the postgresql database and see what database you're connected to|
+![image](https://user-images.githubusercontent.com/106099396/181625014-d61c10ee-60c3-4b52-90f5-5eb6fb783f37.png)
 
-# The following example shows a query using graphql :
-```
-query interventions_by_building {
-  building(id: 2) {
-    id
-    customer {
-      id
-      companyName
-      cpyContactName: fullNameOfTheCompanyContact
-      cpyContactEmail: emailOfTheCompanyContact
-      cpyContactPhone: companyContactPhone
-      cpyDescription: companyDescription
-      createdAt
-      updatedAt
-    }
-    interventions {
-      id
-      employeeid
-      buildingid
-      batteryid
-      columnid
-      elevatorid
-      result
-      report
-      status
-      start_of_the_intervention: startDateAndTimeOfTheIntervention
-      end_of_the_intervention: dateAndTimeOfTheEndOfTheIntervention
-    }
-  }
-}
+---
 
-```
-## You should get something like this :
+![image](https://user-images.githubusercontent.com/106099396/181625143-cba77cef-be9c-46dd-9ef4-4cece50076e1.png)
 
-<img width="463" alt="image" src="https://user-images.githubusercontent.com/105597570/180460284-f8d86aee-c0c4-4cb0-9cf6-737f096b5e66.png">
-
-# JSON link for our collection of requests for Postman
-```
-https://www.getpostman.com/collections/69bb0a21411e5a31393b
-```
-# Dependencies
-
-  To test our project, you will need the following :
-
--   Postman => https://www.postman.com/downloads/
