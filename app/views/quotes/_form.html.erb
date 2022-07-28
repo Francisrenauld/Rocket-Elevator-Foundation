@@ -1,0 +1,292 @@
+<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
+
+				<!-- TOP NAV -->
+				<header id="topNav">
+					<div class="container">
+
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						<!-- Logo -->
+
+						<a class="logo float-left scrollTo" href="/">
+							<img src="assets/images/Logo.png" alt="" />
+						</a>
+
+						<!--
+							Top Nav
+
+							AVAILABLE CLASSES:
+							submenu-dark = dark sub menu
+						-->
+						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<!--
+									.nav-onepage
+									Required for onepage navigation links
+
+									Add .external for an external link!
+								-->
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+									<li class="active">
+										<!-- HOME -->
+										<a id="home-nav" href="/">
+											HOME
+										</a>
+									</li>
+									<li> 
+										<!-- SERVICES -->
+										<a id="services-nav" href="/#services">
+											SERVICES
+										</a>
+									</li>
+									<li>
+										<!-- PORTFOLIO -->
+										<a id="portfolio-nav" href="/#portfolio">
+											PORTFOLIO
+										</a>
+									</li>
+									<li>
+										<!-- NEWS -->
+										<a id="news-nav" href="/#news">
+											NEWS
+										</a>
+									</li>
+
+									<li>
+										<!-- CLIENTS -->
+										<a id="clients-nav" href="/#clients">
+											CLIENTS
+										</a>
+									</li>
+									<li>
+										<!-- CONTACT -->
+										<a id="contact-nav" href="/#contact">
+											CONTACT
+										</a>
+									<%# <li>
+										<!-- SUBMISSION -->
+										<a id="quote-nav" href="quotes/new.html">
+											SUBMISSION
+										</a>
+									</li> %>
+									<%# <li>
+										<!-- LOGIN -->
+										<a id="login-nav" href="/admin">
+											LOGIN
+										</a>
+									</li>
+									<li>
+										<!-- LOGOUT -->
+										<a id="logout-nav" data-method="delete" href="/users/sign_out">
+											LOGOUT
+										</a>
+									</li> %>
+
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+				<!-- /Top Nav -->
+
+			</div>
+      <h1 style="font-size:4vw; text-align:center; background-color:#303030; color:white">
+				<i>
+					Our prices</i>
+			</h1> <br><br>
+
+
+<%= form_with(model: quote, local: true) do |form| %>
+  <% if quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
+
+      <ul>
+      <% quote.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="alert_mandatory" class="alert alert-danger mb-30">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
+  </div>
+
+  
+
+  <div class="field center align">
+	<%= form.label :Email %>
+	<%= form.email_field :Email, :id => "email", :class => "form-control", :required => true %>
+  </div>
+
+  <div class="field center align">
+	<%= form.label :Company_Name %>
+	<%= form.text_field :Company_Name, :id => "company_name", :class => "form-control", :required => true %>
+  </div>
+
+  <div id="building-type" class="field center align">
+   <h2> <%= form.label :Choose_A_Building_Type%><br></h2>
+    <%= form.label :Residential %>
+    <%= form.radio_button :Building_Type, "residentialBuilding", :id => "buildingOption1", :class => "align col-md-2" %>
+    <%= form.label :Corporate %>
+    <%= form.radio_button :Building_Type, "corporateBuilding", :id => "buildingOption2", :class => "align col-md-2"  %>
+    <%= form.label :Commercial %>
+    <%= form.radio_button :Building_Type, "commercialBuilding", :id => "buildingOption3", :class => "align col-md-2"  %>
+    <%= form.label :Hybrid %>
+    <%= form.radio_button :Building_Type, "hybridBuilding", :id => "buildingOption4" , :class => "align col-md-2" %>
+
+  </div>
+
+  <div class="field center service buildingQuestions">
+    <%= form.label :Number_of_apartments, :class => "residential1" %>
+    <%= form.number_field :Number_of_apartments, min: 0, :id => "number-of-apartments"%>
+    
+  </div>
+
+  <div class="field center service buildingQuestions">
+    <%= form.label :Number_of_floors, :class => "residential1 corporate1 commercial1 hybrid1"%>
+    <%= form.number_field :Number_of_floors, min: 0, :id => "number-of-floors"  %>
+  </div>
+
+  <div class="field center service buildingQuestions">
+    <%= form.label :Number_of_basements, :class => "residential1 corporate1 commercial1 hybrid1"%>
+    <%= form.number_field :Number_of_basements, min: 0, :id => "number-of-basements"  %>
+  </div>
+
+  <div class="field center service buildingQuestions">
+    <%= form.label :Number_of_separate_companies, :class => "corporate1" %>
+    <%= form.number_field :Number_of_separate_companies, min: 0, :id => "number-of-corporations"  %>
+  </div>
+
+  <div class="field center service buildingQuestions">
+    <%= form.label :Number_of_parking_spaces, :class => "corporate1 commercial1 hybrid1" %>
+    <%= form.number_field :Number_of_parking_spaces, min: 0, :id => "number-of-parking-spots"  %>
+  </div>
+
+  <div class="field center service buildingQuestions">
+    <%= form.label :Maximum_Number_Of_Occupants_Per_Floor, :class => "corporate1 hybrid1" %>
+    <%= form.number_field :Maximum_Number_Of_Occupants_Per_Floor, min: 0, :id => "maximum-occupancy" %>
+  </div>
+
+  <div class="field center service buildingQuestions">
+    <%= form.label :Number_Of_Distinct_Businesses, :class => "commercial1 hybrid1" %>
+    <%= form.number_field :Number_Of_Distinct_Businesses, min: 0, :id => "number-of-companies"  %>
+  </div>
+
+  <div class="field center service buildingQuestions">
+    <%= form.label :Number_Of_Elevators_Needed, :class => "commercial1" %>
+    <%= form.number_field :Number_Of_Elevators_Needed, min: 0, :id => "number-of-elevators"  %>
+  </div>
+
+  <div class="field center service buildingQuestions">
+    <%= form.label :Number_Of_Hours_Of_Activity_Of_The_Building, :class => "hybrid1" %>
+    <%= form.number_field :Number_Of_Hours_Of_Activity_Of_The_Building, min: 0, :id => "business-hours"  %>
+  </div>
+
+  <div id="product-line" class="field center service buildingQuestions">
+  <%= form.label :Type_Of_Installation %><br />
+  <%= form.label :Standard %>
+  <%= form.radio_button :Type_Of_Installation, "standard", :id => "standard"%>
+  <%= form.label :Premium %>
+  <%= form.radio_button :Type_Of_Installation, "premium", :id => "premium"%>
+  <%= form.label :Excelium %>
+  <%= form.radio_button :Type_Of_Installation, "excelium", :id => "excelium"%>
+</div>
+
+<div class="field center service buildingQuestions">
+<%= form.label :Amount_Of_Elevators_Needed %>
+<%= form.number_field :Amount_Of_Elevators_Needed, :id => "elevator-amount", :readonly => true %>
+</div>
+
+<div class="field center service buildingQuestions">
+<%= form.label :Elevator_Unit_Price %>
+<%= form.text_field :Elevator_Unit_Price, :id => "elevator-unit-price", :readonly => true	 %>
+</div>
+
+<div class="field center service buildingQuestions">
+<%= form.label :Elevator_Total_Price %>
+<%= form.text_field :Elevator_Total_Price, :id => "elevator-total-price" , :readonly => true %>
+</div>
+
+<div class="field center service buildingQuestions">
+<%= form.label :Installation_Fees %>
+<%= form.text_field :Installation_Fees, :id => "installation-fees", :readonly => true %>
+</div>
+
+<div class="field center service buildingQuestions">
+<%= form.label :Final_Price %>
+<%= form.text_field :Final_Price, :id => "final-price", :readonly => true %>
+</div>
+
+  <div class="actions center service buildingQuestions">
+    <%= form.submit :Submit, :id => "submit" %>
+  </div>
+<% end %>
+	<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<!-- col #1 -->
+						<div class="col-md-8">
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+								We have the conviction that we create the most innovative and reliable
+								products
+								on the
+								market.<a href="#contact"> Contact us</a> today for any questions you
+								might
+								have.</p>
+							<h2><a href="tel:(418) 555-1234">(418) 555-1234</a></h2>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-4 col-sm-4">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+							<form class="validate" action="php/newsletter.php" method="post"
+								data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required"
+										placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn btn-primary" type="submit">Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a href="#">Terms &amp; Conditions</a></li>
+							<li>&bull;</li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+						&copy; All Rights Reserved, Company LTD
+					</div>
+				</div>
+
+			</footer>

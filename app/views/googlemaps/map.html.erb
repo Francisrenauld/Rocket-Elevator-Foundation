@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Add Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="/map.css" />
+    <%# <script type="module" src="/map.js"></script> %>
+  </head>
+  
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <script>
+    // Initialize and add the map
+    function initMap() {
+      // The map center
+      var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 3.4,
+        center: { lat: 38.867, lng: -76.9792 }
+      });
+      
+      // The markers position
+      <% @infoMap.each do |b| %>
+        marker = new google.maps.Marker({
+          position: { lat: <%= b[:lat] %>, lng: <%= b[:lng] %> },
+          map: map
+        });
+        var infowindow = new google.maps.InfoWindow({
+          content:
+            "Address:  <%= b[:address] %> ;" +
+            "Number of floors: <%= b[:numberOfFloor] %> ;" +
+            " Company name: <%= b[:customerName] %> ;" +
+            " Number of battery: <%= b[:numberOfBattery] %> ;" +
+            " Number of column: <%= b[:numberOfColumns] %> ;" +
+            " Number of elevator: <%= b[:numberOfElevator] %> ;" +
+            " technical contact name: <%= b[:techContactName] %> ;",
+          maxWidth: 200,
+
+          
+        });
+        //marker.addListener("click", (b) => {
+        infowindow.open(map, marker);
+        
+      <% end %>
+
+
+      marker.setMap(map);
+      // marker.addListener("click", (i) => {
+      // infowindow.open(map, marker);
+    }
+
+    window.initMap = initMap;
+    </script>
+
+    <!-- 
+     The `defer` attribute causes the callback to execute after the full HTML
+     document has been parsed. For non-blocking uses, avoiding race conditions,
+     and consistent behavior across browsers, consider loading using Promises
+     with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+    -->
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&v=weekly"
+      defer
+    ></script>
+
+  </body>
+
+</html>

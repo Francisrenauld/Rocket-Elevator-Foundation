@@ -1,0 +1,28 @@
+.align {
+	display: table-cell;
+	font-style: oblique;
+}
+
+.center {
+	display: table;
+	/* Allows the centering to work */
+	margin: 0 auto;
+	text-align: center;
+}
+
+.question {
+	display: table;
+
+	font-style: oblique;
+}
+
+.buildingQuestions {
+	display: none;
+	text-align: center;
+}
+
+.center1 {
+	/* Allows the centering to work */
+	display: inline-block;
+	text-align: center;
+}
