@@ -4,9 +4,6 @@ For this week's project, i added i new page named intervention so that all the a
 
 Link to our Website => https://rocketelevatorfrancisrenauld.ca/
 
-Link to our Video => https://youtu.be/tKcguiwSwcM
-
-
 ![image](https://user-images.githubusercontent.com/106099396/181625014-d61c10ee-60c3-4b52-90f5-5eb6fb783f37.png)
 
 ---
