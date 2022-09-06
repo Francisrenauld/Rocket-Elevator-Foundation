@@ -4,10 +4,10 @@ class GraphqlController < ApplicationController
   # but you'll have to authenticate your user separately
   # protect_from_forgery with: :null_session
  postgreSQL = PG.connect( 
-        dbname: 'PhilippeThivierge', 
-        host: 'codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com', 
-        user: 'codeboxx',
-        password: 'Codeboxx1!'
+        dbname: 'FrancisRenauld', 
+        host: 'rocket-elevator-postgre-db.ccvntd9gq13e.ca-central-1.rds.amazonaws.com', 
+        user: 'postgres',
+        password: 'Password123'
     )
   def execute
     

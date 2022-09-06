@@ -3,12 +3,12 @@ namespace :database do
     require 'faker'
     require 'json'
 # To connect to a remote database (postgreSQL in our case).
-# postgreSQL = PG.connect( 
-#     dbname: 'FrancisRenauld', 
-#     host: 'codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com', 
-#     user: 'codeboxx',
-#     password: 'Codeboxx1!'
-# )
+postgreSQL = PG.connect( 
+    dbname: 'FrancisRenauld2', 
+    host: 'rocket-elevator-postgre-db.ccvntd9gq13e.ca-central-1.rds.amazonaws.com', 
+    user: 'postgres',
+    password: 'Password123'
+)
 # To both delete all the DATA inside the mySQL database and "Re-Populate" it with newly generated fake DATA.
     task mysql: [
         :empty_mysql, 
