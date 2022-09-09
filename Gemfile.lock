@@ -367,6 +367,11 @@ GEM
       websocket (~> 1.0)
     sendgrid-ruby (6.6.2)
       ruby_http_client (~> 3.4)
+    sentry-rails (5.4.2)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.4.2)
+    sentry-ruby (5.4.2)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     slack-notifier (2.4.0)
     slack-ruby-client (1.1.0)
       faraday (>= 2.0)
@@ -467,6 +472,8 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   sendgrid-ruby
+  sentry-rails
+  sentry-ruby
   slack-notifier
   slack-ruby-client
   spring
